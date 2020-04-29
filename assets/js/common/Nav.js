@@ -29,7 +29,7 @@ export default class Nav extends Component{
                 <div className="text-center">
                     <img src={logo} alt="logo" className="nav-logo mt-4"/>
                     <div className="text-center ">
-                        <h1 className="text-grey-inherit h-full mb-4 pb-4">Race Together</h1>
+                        <h1 className="text-grey-inherit h-full mb-4 pb-2">Race Together</h1>
                     </div>
                 </div>
                 <nav className={scroll > 0 ? 'navbar navbar-expand-lg navbar-light fixed-top bg-blue-gradient grey-separator' : "navbar navbar-expand-lg navbar-light "}>
@@ -59,10 +59,8 @@ export default class Nav extends Component{
                     </div>
                 </nav>
             </div>
-
         );
     }
-
 }
 
 ReactDOM.render(<Nav />, document.getElementById('nav'));
