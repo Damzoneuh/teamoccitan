@@ -94,6 +94,11 @@ body{
   .nav-logo{
     width: 40%;
   }
+
+  .h-250{
+    height: 200px;
+  }
+
 }
 @media screen and (min-width: 551px) and (max-width: 850px){
   .parallax-banner{
@@ -103,6 +108,10 @@ body{
   .nav-logo{
     width: 40%;
   }
+
+  .h-250{
+    height: 250px;
+  }
 }
 @media screen and (min-width: 851px){
   .parallax-banner{
@@ -111,6 +120,9 @@ body{
 
   .nav-logo{
     width: 40%;
+  }
+  .h-250{
+    height: 250px;
   }
 }
 
@@ -169,4 +181,16 @@ body{
     -moz-transform: scale(1);
     -webkit-transform: scale(1);
   }
+}
+
+.navbar{
+  z-index: 2000;
+}
+
+.z-1500{
+  z-index: 1500;
+}
+
+.dropdown-item:hover, .dropdown-item:focus{
+  color: $green-inherit !important;
 }

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import logo from '../../img/tor.png';
 
+const el = document.getElementById('nav');
+
 export default class Nav extends Component{
     constructor(props) {
         super(props);
@@ -44,7 +46,7 @@ export default class Nav extends Component{
                                 <a className="nav-link text-grey-inherit" href="/">Accueil </a>
                             </li>
                             <li className="nav-item m-auto">
-                                <a className="nav-link text-grey-inherit" href="#">L'équipe</a>
+                                <a className="nav-link text-grey-inherit" href="#">Actus</a>
                             </li>
                             <li className="nav-item m-auto">
                                 <a className="nav-link text-grey-inherit" href="#">Nos partenaires</a>
@@ -55,6 +57,24 @@ export default class Nav extends Component{
                             <li className="nav-item m-auto">
                                 <a className="nav-link text-grey-inherit" href="#">Galerie</a>
                             </li>
+                            {el.dataset.connected === '1' ?
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle text-grey-inherit" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Espace Membre
+                                    </a>
+                                    <div className="dropdown-menu bg-blue-gradient" aria-labelledby="navbarDropdown">
+                                        <a className="dropdown-item text-grey-inherit" href="/member">Mon espace</a>
+                                        <a className="dropdown-item text-grey-inherit" href="/logout">Déconnexion</a>
+                                    </div>
+                                </li>
+                                :
+                                <li className="nav-item m-auto">
+                                    <a className="nav-link text-grey-inherit" href="/login">Connexion</a>
+                                </li>
+                            }
+
+
                         </ul>
                     </div>
                 </nav>

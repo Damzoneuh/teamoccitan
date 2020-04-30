@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Réinitialisation mot de passe{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 offset-md-3 mt-5 mb-5">
+                <div class="p-4 bg-blue-gradient rounded shadow-lg">
+                    <h1 class="h3 mb-3 font-weight-normal text-center">Réinitialisation de mot de passe</h1>
+                    {{ form_start(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

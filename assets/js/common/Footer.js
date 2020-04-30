@@ -40,7 +40,7 @@ export default class Footer extends Component{
                                         <a className="nav-link text-grey-inherit" href="https://www.facebook.com/TeamOccitansRacingEsports/" target="_blank">
                                             <i className="fab fa-facebook mr-4"></i> Facebook Team occitans
                                         </a>
-                                        <a className="nav-link text-grey-inherit" href="https://www.instagram.com/teamoccitansesports/" target="_blank">
+                                        <a className="nav-link text-grey-inherit" href="https://www.instagram.com/team_occitans_racing_esports/" target="_blank">
                                             <i className="fab fa-instagram mr-4"></i> Instagram Team occitans
                                         </a>
                                         <a className="nav-link text-grey-inherit" href="https://www.youtube.com/channel/UC8WGInNJNmLaz4clUqupTIA/featured" target="_blank">
