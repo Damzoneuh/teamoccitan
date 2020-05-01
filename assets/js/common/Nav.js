@@ -23,7 +23,6 @@ export default class Nav extends Component{
         })
     }
 
-
     render() {
         const {scroll} = this.state;
         return (
@@ -46,10 +45,10 @@ export default class Nav extends Component{
                                 <a className="nav-link text-grey-inherit" href="/">Accueil </a>
                             </li>
                             <li className="nav-item m-auto">
-                                <a className="nav-link text-grey-inherit" href="#">Actus</a>
+                                <a className="nav-link text-grey-inherit" href="/news">Actus</a>
                             </li>
                             <li className="nav-item m-auto">
-                                <a className="nav-link text-grey-inherit" href="#">Nos partenaires</a>
+                                <a className="nav-link text-grey-inherit" href="#partner">Nos partenaires</a>
                             </li>
                             <li className="nav-item m-auto">
                                 <a className="nav-link text-grey-inherit" href="#">Live</a>
@@ -73,8 +72,6 @@ export default class Nav extends Component{
                                     <a className="nav-link text-grey-inherit" href="/login">Connexion</a>
                                 </li>
                             }
-
-
                         </ul>
                     </div>
                 </nav>

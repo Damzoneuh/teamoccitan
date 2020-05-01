@@ -71,6 +71,7 @@ Encore
     .addEntry('nav', './assets/js/common/Nav.js')
     .addEntry('footer', './assets/js/common/Footer.js')
     .addEntry('index', './assets/js/modules/index/Index.js')
+    .addEntry('news', './assets/js/modules/news/News.js')
 ;
 
 module.exports = Encore.getWebpackConfig();

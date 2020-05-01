@@ -9,6 +9,10 @@ $night-blue: rgb(0,0,63);
 $grey-inherit: rgba(255,255,255, 0.7);
 $black-inherit: rgba(0,0,0,0.75);
 
+a, button{
+  outline: none !important;
+}
+
 @font-face {
   font-family: "Neo";
   src: url("../fonts/zektonrg.ttf")
@@ -193,4 +197,13 @@ body{
 
 .dropdown-item:hover, .dropdown-item:focus{
   color: $green-inherit !important;
+}
+
+.news-box{
+  -ms-overflow-x: auto;
+  overflow-x: auto;
+  height: 200px;
+  //line-height: 20px;
+  text-overflow: ellipsis;
+  word-wrap: break-spaces;
 }

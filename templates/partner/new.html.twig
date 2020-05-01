@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Admin{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="mt-5 mb-5 bg-blue-gradient text-grey-inherit p-4">
+                    <h1 class="mt-5 mb-5 text-center">Ajouter un partenaire</h1>
+                    {{ include('partner/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

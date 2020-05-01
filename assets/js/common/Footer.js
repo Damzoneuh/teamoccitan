@@ -1,15 +1,28 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import logo from '../../img/tor.png';
+import axios from 'axios';
 
 export default class Footer extends Component{
     constructor(props) {
         super(props);
+        this.state = {
+            partners: null
+        }
+    }
 
+    componentDidMount(){
+        axios.get('/api/partner')
+            .then(res => {
+                this.setState({
+                    partners: res.data
+                })
+            })
     }
 
 
     render() {
+        const {partners} = this.state;
         return (
             <footer className="bg-blue-gradient text-green-inherit">
                 <div className="container-fluid">
@@ -24,13 +37,19 @@ export default class Footer extends Component{
                             </div>
                         </div>
                         <div className="col text-center text-grey-inherit mt-4 mb-4">
-                            <h1>Partenaires</h1>
-                            <ul className="nav flex-column">
-                                <li className="nav-item">
-                                    Back'n Dev
-                                </li>
-                            </ul>
-
+                            <h1><a name="partner">Partenaires</a></h1>
+                                {partners && partners.length > 0 ?
+                                    <ul className="nav flex-column">
+                                        {partners.map(p => {
+                                            return (
+                                                <li className="nav-item">
+                                                    <a href={'/partner/' + p.id} className="text-grey-inherit">{p.name}</a>
+                                                </li>
+                                            )
+                                        })}
+                                    </ul>
+                                    :
+                                    ''}
                         </div>
                         <div className="col text-center text-grey-inherit mt-4 mb-4 ">
                             <div>
