@@ -12,8 +12,6 @@ class LiveController extends AbstractController
      */
     public function index()
     {
-        return $this->render('live/index.html.twig', [
-            'controller_name' => 'LiveController',
-        ]);
+        return $this->render('live/index.html.twig');
     }
 }
