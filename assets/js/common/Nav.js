@@ -51,7 +51,7 @@ export default class Nav extends Component{
                                 <a className="nav-link text-grey-inherit" href="#partner">Nos partenaires</a>
                             </li>
                             <li className="nav-item m-auto">
-                                <a className="nav-link text-grey-inherit" href="#">Live</a>
+                                <a className="nav-link text-grey-inherit" href="/live">Live</a>
                             </li>
                             <li className="nav-item m-auto">
                                 <a className="nav-link text-grey-inherit" href="#">Galerie</a>

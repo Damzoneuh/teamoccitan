@@ -61,13 +61,12 @@ export default class Index extends Component{
                     }}
                     >
                         <div className="d-flex justify-content-around align-items-center h-100">
-                            <a href="https://www.youtube.com/channel/UC8WGInNJNmLaz4clUqupTIA/featured" className="text-blue-inherit z-1500 p-4 scale text-decoration-none" title="chaine Youtube Team Occitans">
+                            <a href="https://www.youtube.com/channel/UC8WGInNJNmLaz4clUqupTIA/featured" className="text-blue-inherit z-1500 p-4 scale text-decoration-none" title="chaine Youtube Team Occitans" target="_blank">
                                  <span style={{fontSize:'15rem', zIndex: 1500}}>
                                     <i className="fab fa-youtube text-grey-inherit"></i>
                                  </span>
                             </a>
                         </div>
-
                     </ParallaxBanner>
                 </ParallaxProvider>
             </div>
