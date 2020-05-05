@@ -52,6 +52,14 @@ class Relay
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTimeOffset()
+    {
+        return $this->timeOffset;
+    }
+
     public function getTeam(): ?Team
     {
         return $this->team;

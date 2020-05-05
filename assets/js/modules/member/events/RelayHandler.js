@@ -36,28 +36,19 @@ export default class RelayHandler extends Component{
         for (let i = 0; event.duration > i; i++){
             let row = {
                 hour: this.sortDoubleO(hour + i) + ' ' + this.sortDoubleMinutes(minutes),
-                rel: []
+                rel: [null, null]
             };
-            team.map(t => {
+            team.map((t, key) => {
                 if (relays && relays.length > 0){
                     relays.map(r => {
-                        if (!r.timeOffset){
-                            r.timeOffset = 0
-                        }
-                        if (r.id === t.id && r.timeOffset === i){
-                            let rel = {
+                        if (r.team.id === t.id && r.timeOffset === i){
+                            row.rel[key] = {
                                 pilot: r.pilot,
-                                car: r.car
-                            }
-                            row.rel.push(rel)
+                                car: r.car,
+                                team: r.team.id
+                            };
                         }
-                        else {
-                            row.rel.push(null);
-                        }
-                    })
-                }
-                else {
-                    row.rel.push(null);
+                    });
                 }
             })
             table.push(row);
@@ -106,9 +97,6 @@ export default class RelayHandler extends Component{
             car: this.state.selectedCar,
             event: this.state.event.id
         };
-        this.setState({
-            isLoaded: false
-        })
         axios.post('/pilot/api/relay/create', payLoad)
             .then(res => {
                 this.setState({
@@ -119,12 +107,14 @@ export default class RelayHandler extends Component{
                     isLoaded: true
                 });
                 this.getEventSorted();
+                window.location.href = '/pilot/event/' + this.state.event.id
             })
             .catch(e => {
                 this.getEventSorted();
                 this.setState({
                     isLoaded: true
-                })
+                });
+                window.location.href = '/pilot/event/' + this.state.event.id
             })
     }
 
