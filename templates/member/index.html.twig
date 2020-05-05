@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }} Espace membre{% endblock %}
 
 {% block body %}
-    <div id="member">
+    <div id="member" data-user="{{ app.user.id }}">
 
     </div>
 {% endblock %}

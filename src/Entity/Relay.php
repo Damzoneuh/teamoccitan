@@ -19,59 +19,71 @@ class Relay
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User")
-     */
-    private $pilot;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $timeOffset;
 
-    public function __construct()
-    {
-        $this->pilot = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Team")
+     */
+    private $team;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $pilot;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Car")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $car;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getPilot(): Collection
+    public function setTimeOffset(int $timeOffset): self
+    {
+        $this->timeOffset = $timeOffset;
+
+        return $this;
+    }
+
+    public function getTeam(): ?Team
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?Team $team): self
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    public function getPilot(): ?User
     {
         return $this->pilot;
     }
 
-    public function addPilot(User $pilot): self
+    public function setPilot(?User $pilot): self
     {
-        if (!$this->pilot->contains($pilot)) {
-            $this->pilot[] = $pilot;
-        }
+        $this->pilot = $pilot;
 
         return $this;
     }
 
-    public function removePilot(User $pilot): self
+    public function getCar(): ?Car
     {
-        if ($this->pilot->contains($pilot)) {
-            $this->pilot->removeElement($pilot);
-        }
-
-        return $this;
+        return $this->car;
     }
 
-    public function getTimeOffset(): ?int
+    public function setCar(?Car $car): self
     {
-        return $this->timeOffset;
-    }
-
-    public function setTimeOffset(int $timeOffset): self
-    {
-        $this->timeOffset = $timeOffset;
+        $this->car = $car;
 
         return $this;
     }

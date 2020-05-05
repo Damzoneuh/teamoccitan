@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Evènement{% endblock %}
+
+{% block body %}
+<div id="event" data-event="{{ event }}">
+
+</div>
+{% endblock %}
+{% block javascripts %}{{ parent() }} {{ encore_entry_script_tags('event') }}{% endblock %}

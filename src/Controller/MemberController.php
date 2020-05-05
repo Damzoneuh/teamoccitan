@@ -46,60 +46,9 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @param Request $request
-     * @Route("/admin/event/create", name="admin_event_create")
-     * @return RedirectResponse|Response
-     */
-    public function createEvent(Request $request)
-    {
-        $form = $this->createFormBuilder()
-            ->add('name', TextType::class, [
-                'label' => 'Nom de l\'évènement'
-            ])
-            ->add('date', DateTimeType::class, [
-                'label' => 'Date',
-                'placeholder' => [
-                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
-                    'hour' => 'Heure', 'minute' => 'Minute'
-                ],
-                'input_format' => 'd-m-Y H:i',
-                'attr' => [
-                    'class' => 'd-flex justify-content-around'
-                ]
-            ])
-            ->add('duration', NumberType::class, [
-                'label' => 'Durée'
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Envoyer',
-                'attr' => [
-                    'class' => 'btn btn-group btn-success'
-                ]
-            ])
-            ->getForm();
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $event = new Event();
-            $data = $form->getData();
-            $event->setName($data['name']);
-            $event->setDate($data['date']);
-            $event->setDuration($data['duration']);
-            $em->persist($event);
-            $em->flush();
-
-            $this->addFlash('success', 'L\'évènement à été ajouté');
-            return $this->redirectToRoute('admin_event_create');
-        }
-
-        return $this->render('member/create-event.html.twig', ['form' => $form->createView()]);
-    }
-
-    /**
      * @param null $id
      * @return JsonResponse
-     * @Route("/api/user/event", name="api_user_event", methods={"GET"})
+     * @Route("/api/user/event/{id}", name="api_user_event", methods={"GET"})
      */
     public function getEvent($id = null){
         if (!$id){

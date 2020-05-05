@@ -73,6 +73,7 @@ Encore
     .addEntry('index', './assets/js/modules/index/Index.js')
     .addEntry('news', './assets/js/modules/news/News.js')
     .addEntry('member', './assets/js/modules/member/Member.js')
+    .addEntry('event', './assets/js/modules/member/events/Show.js')
 ;
 
 module.exports = Encore.getWebpackConfig();

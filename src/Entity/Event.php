@@ -48,11 +48,17 @@ class Event
      */
     private $duration;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Track")
+     */
+    private $track;
+
     public function __construct()
     {
         $this->pilotEngage = new ArrayCollection();
         $this->car = new ArrayCollection();
         $this->relay = new ArrayCollection();
+        $this->track = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -170,6 +176,32 @@ class Event
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Track[]
+     */
+    public function getTrack(): Collection
+    {
+        return $this->track;
+    }
+
+    public function addTrack(Track $track): self
+    {
+        if (!$this->track->contains($track)) {
+            $this->track[] = $track;
+        }
+
+        return $this;
+    }
+
+    public function removeTrack(Track $track): self
+    {
+        if ($this->track->contains($track)) {
+            $this->track->removeElement($track);
+        }
 
         return $this;
     }
