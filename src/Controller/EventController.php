@@ -306,5 +306,19 @@ class EventController extends AbstractController
 
         return $this->json('success');
     }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @Route("/pilot/api/relay/delete/{id}", name="pilot_api_relay_delete", methods={"DELETE"})
+     */
+    public function deleteRelay($id){
+        $em = $this->getDoctrine()->getManager();
+        $relay = $em->getRepository(Relay::class)->find($id);
+        $em->remove($relay);
+        $em->flush();
+
+        return $this->json(true);
+    }
 }
 

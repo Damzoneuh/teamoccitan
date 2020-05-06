@@ -19,6 +19,7 @@ export default class RelayHandler extends Component{
         this.getEventSorted = this.getEventSorted.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -36,8 +37,11 @@ export default class RelayHandler extends Component{
         for (let i = 0; event.duration > i; i++){
             let row = {
                 hour: this.sortDoubleO(hour + i) + ' ' + this.sortDoubleMinutes(minutes),
-                rel: [null, null]
+                rel: []
             };
+            for(let i = 0; i < team.length; i++){
+                row.rel.push(null);
+            }
             team.map((t, key) => {
                 if (relays && relays.length > 0){
                     relays.map(r => {
@@ -45,7 +49,8 @@ export default class RelayHandler extends Component{
                             row.rel[key] = {
                                 pilot: r.pilot,
                                 car: r.car,
-                                team: r.team.id
+                                team: r.team.id,
+                                id: r.id
                             };
                         }
                     });
@@ -115,6 +120,13 @@ export default class RelayHandler extends Component{
                     isLoaded: true
                 });
                 window.location.href = '/pilot/event/' + this.state.event.id
+            })
+    }
+
+    handleDelete(id){
+        axios.delete('/pilot/api/relay/delete/' + id)
+            .then(res => {
+                window.location.href = '/pilot/event/' + this.state.event.id;
             })
     }
 
@@ -215,14 +227,21 @@ export default class RelayHandler extends Component{
                                     else {
                                         return (
                                             <td className="bg-blue-gradient text-grey-inherit">
-                                                <div className="text-center">
-                                                    {r.pilot.name}
-                                                </div>
-                                                <div className="text-center">
-                                                    {r.pilot.lastname}
-                                                </div>
-                                                <div className="text-center">
-                                                    {r.car.name}
+                                                <div className="d-flex align-items-center justify-content-around">
+                                                    <div >
+                                                        <div className="text-center">
+                                                            {r.pilot.name}
+                                                        </div>
+                                                        <div className="text-center">
+                                                            {r.pilot.lastname}
+                                                        </div>
+                                                        <div className="text-center">
+                                                            {r.car.name}
+                                                        </div>
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <i className="fas fa-trash text-danger link" onClick={() => this.handleDelete(r.id)}></i>
+                                                    </div>
                                                 </div>
                                             </td>
                                         )

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Events from "./events/Events";
+import Setup from "./setup/Setup";
 
 export default class Member extends Component{
     constructor(props) {
@@ -53,6 +54,8 @@ export default class Member extends Component{
                                 <Events />
                             </div>
                             : ''}
+                        {tab === 2 ? <div></div> : ''}
+                        {tab === 3 ? <Setup /> : ''}
                     </div>
                 </div>
             </div>
