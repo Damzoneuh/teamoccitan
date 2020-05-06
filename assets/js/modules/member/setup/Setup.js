@@ -99,7 +99,7 @@ export default class Setup extends Component{
                                         <div className="d-flex justify-content-center align-items-end h-100">
                                             <button className="btn btn-group btn-success">{buttonLoaded ? 'Rechercher' :
                                                 <div className="text-center">
-                                                    <div className="spinner-border text-blue" role="status">
+                                                    <div className="spinner-border text-grey-inherit" role="status">
                                                         <span className="sr-only"></span>
                                                     </div>
                                                 </div>
