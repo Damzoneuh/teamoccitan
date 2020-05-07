@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Entity\Img;
 use App\Entity\Result;
+use App\Entity\Skin;
 use App\Entity\User;
 use App\Helper\FileHelper;
 use Exception;
@@ -148,5 +149,75 @@ class MemberController extends AbstractController
             [],
             $this->context
         );
+    }
+
+    /**
+     * @return JsonResponse
+     * @Route("/pilot/api/skin", name="/pilot/api/skin", methods={"GET"})
+     */
+    public function getSkins(){
+        return $this->json(
+            $this->getDoctrine()->getRepository(Skin::class)->findAll(),
+            200,
+            [],
+            $this->context
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     * @throws Exception
+     * @Route("/admin/skin/create", name="admin_skin_create")
+     */
+    public function createSkin(Request $request){
+        $form = $this->createFormBuilder()
+            ->add('name', TextType::class, [
+                'label' => 'Nom du skin'
+            ])
+            ->add('file', FileType::class, [
+                'label' => 'Fichier'
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Envoyer',
+                'attr' => [
+                    'class' => 'btn btn-group btn-success'
+                ]
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $data = $form->getData();
+            $file = $data['file'];
+            $randomName = $this->getGeneratedName($file);
+            $storagePath = $this->getParameter('app.storage');
+            $this->moveFile($file, $storagePath, $randomName);
+
+            $skin = new Skin();
+            $skin->setName($data['name']);
+            $skin->setPath($storagePath . '/' . $randomName);
+
+            $em->persist($skin);
+            $em->flush();
+
+            $this->addFlash('success', 'Le skin à été ajouté');
+            return $this->redirectToRoute('admin_skin_create');
+        }
+
+        return $this->render('skin/create.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @Route("/pilot/download/skin/{id}", name="pilot_download_skin")
+     */
+    public function downloadSkin($id){
+        /** @var Skin $skin */
+        $skin = $this->getDoctrine()->getRepository(Skin::class)->find($id);
+        return $this->file($skin->getPath());
     }
 }

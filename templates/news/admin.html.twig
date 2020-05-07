@@ -18,7 +18,7 @@
                                             {{ n.author.name }} {{ n.author.lastName }}
                                         </td>
                                         <td>
-                                            <a href="{{ path('admin_news_enable', {id: n.id}) }}" class="{{ n.isActive ? 'text-danger' : 'text-green-inherit' }}">
+                                            <a href="{{ path('editor_news_enable', {id: n.id}) }}" class="{{ n.isActive ? 'text-danger' : 'text-green-inherit' }}">
                                                 {{ n.isActive ? 'Désactiver' : 'Activer' }}
                                             </a>
                                         </td>

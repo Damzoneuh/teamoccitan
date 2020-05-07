@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Admin{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row mt-4 mb-4">
+        <div class="col-sm-6 col-4 text-center m-4 ">
+            <a href="{{ path('admin_car_create') }}" class="btn btn-group btn-success">Ajouter une voiture</a>
+        </div>
+        <div class="col-sm-6 col-4 text-center m-4 ">
+            <a href="{{ path('admin_track_create') }}" class="btn btn-group btn-success">Ajouter un circuit</a>
+        </div>
+        <div class="col-sm-6 col-4 text-center m-4 ">
+            <a href="{{ path('admin_setup_create') }}" class="btn btn-group btn-success">Ajouter un setup</a>
+        </div>
+        <div class="col-sm-6 col-4 text-center m-4 ">
+            <a href="{{ path('admin_skin_create') }}" class="btn btn-group btn-success">Ajouter un skin</a>
+        </div>
+        <div class="col-sm-6 col-4 text-center m-4 ">
+            <a href="{{ path('admin_event_create') }}" class="btn btn-group btn-success">Ajouter une évènement</a>
+        </div>
+        <div class="col-sm-6 col-4 text-center m-4 ">
+            <a href="{{ path('admin_partner_create') }}" class="btn btn-group btn-success">Ajouter un partenaire</a>
+        </div>
+        <div class="col-sm-6 col-4 text-center m-4 ">
+            <a href="{{ path('admin_partner') }}" class="btn btn-group btn-success">Gérer les partenaires</a>
+        </div>
+        <div class="col-sm-6 col-4 text-center m-4 ">
+            <a href="{{ path('admin_all_users') }}" class="btn btn-group btn-success">Gerer les utilisateurs</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

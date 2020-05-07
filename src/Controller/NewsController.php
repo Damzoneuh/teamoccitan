@@ -69,7 +69,7 @@ class NewsController extends AbstractController
      * @param Request $request
      * @return Response
      * @throws Exception
-     * @Route("/editor/news/create", name="admin_news_create")
+     * @Route("/editor/news/create", name="editor_news_create")
      */
     public function createNews(Request $request){
         $form = $this->createFormBuilder()
@@ -104,7 +104,7 @@ class NewsController extends AbstractController
                 $path = $this->getParameter('app.storage');
                 if (!$this->moveFile($data['file'], $path, $randomName)){
                     $this->addFlash('error','Une erreur est survenue lors de l\'envoi du fichier');
-                    return $this->redirectToRoute('admin_news_create');
+                    return $this->redirectToRoute('editor_news_create');
                 }
                 $img->setPath($path . '/' . $randomName);
                 $img->setName($name);
@@ -123,14 +123,14 @@ class NewsController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'L\'actualité à bien été enregistrée');
-            return $this->redirectToRoute('admin_news_create');
+            return $this->redirectToRoute('editor_news_create');
         }
         return $this->render('news/create.html.twig', ['form' => $form->createView()]);
     }
 
     /**
      * @return Response
-     * @Route("/admin/news", name="admin_news")
+     * @Route("/editor/news", name="editor_news")
      */
     public function getAdminNews(){
         return $this->render('news/admin.html.twig', ['news' => $this->getDoctrine()->getRepository(News::class)->findAll()]);
@@ -139,7 +139,7 @@ class NewsController extends AbstractController
     /**
      * @param $id
      * @return RedirectResponse
-     * @Route("editor/news/delete/{id}", name="admin_news_delete")
+     * @Route("/editor/news/delete/{id}", name="admin_news_delete")
      */
     public function deleteNews($id){
         $em = $this->getDoctrine()->getManager();
@@ -155,13 +155,13 @@ class NewsController extends AbstractController
             $em->flush();
         }
         $this->addFlash('success', 'L\'actualité à été supprimée');
-        return $this->redirectToRoute('admin_news');
+        return $this->redirectToRoute('editor_news');
     }
 
     /**
      * @param $id
      * @return RedirectResponse
-     * @Route("/editor/news/enable/{id}", name="admin_news_enable")
+     * @Route("/editor/news/enable/{id}", name="editor_news_enable")
      */
     public function enableNews($id){
         $em = $this->getDoctrine()->getManager();
@@ -171,11 +171,11 @@ class NewsController extends AbstractController
             $news->setIsActive(false);
             $em->flush();
             $this->addFlash('success', 'L\'actualité à bien été désactivée');
-            return $this->redirectToRoute('admin_news');
+            return $this->redirectToRoute('editor_news');
         }
         $news->setIsActive(true);
         $em->flush();
         $this->addFlash('success', 'L\'actualité à bien été activée');
-        return $this->redirectToRoute('admin_news');
+        return $this->redirectToRoute('editor_news');
     }
 }

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Editeur{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row mt-4 mb-4">
+        <div class="col text-center">
+            <a href="{{ path('editor_gallery_create') }}" class="btn btn-group btn-success">Ajouter un image en galerie</a>
+        </div>
+        <div class="col text-center">
+            <a href="{{ path('editor_news') }}" class="btn btn-group btn-success">Gestion des actus</a>
+        </div>
+        <div class="col text-center">
+            <a href="{{ path('editor_news_create') }}" class="btn btn-group btn-success">Créer des actus</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
