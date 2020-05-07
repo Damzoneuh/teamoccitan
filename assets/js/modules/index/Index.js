@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import pilot from '../../../img/pilot.jpeg';
 import film from '../../../img/film.jpg';
 import {ParallaxBanner, ParallaxProvider} from "react-scroll-parallax/cjs";
-import lmp1 from '../../../img/lmp1.png';
+import Porshe from '../../../img/porshe.png';
 import lmp2 from '../../../img/lmp2.png';
 
 export default class Index extends Component{
@@ -52,17 +52,17 @@ export default class Index extends Component{
                 <ParallaxProvider>
                     <ParallaxBanner layers={[
                         {
-                            image: lmp1,
-                            amount: -0.3,
+                            image: Porshe,
+                            amount: 0.2,
                         }
                     ]}
                     style={{
-                        height: '40vh',
+                        height: '30vh',
                     }}
                     >
                         <div className="d-flex justify-content-around align-items-center h-100">
                             <a href="https://www.youtube.com/channel/UC8WGInNJNmLaz4clUqupTIA/featured" className="text-blue-inherit z-1500 p-4 scale text-decoration-none" title="chaine Youtube Team Occitans" target="_blank">
-                                 <span style={{fontSize:'15rem', zIndex: 1500}}>
+                                 <span style={{fontSize:'12rem', zIndex: 1500}}>
                                     <i className="fab fa-youtube text-grey-inherit"></i>
                                  </span>
                             </a>

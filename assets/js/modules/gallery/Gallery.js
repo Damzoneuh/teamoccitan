@@ -32,14 +32,17 @@ export default class Gallery extends Component{
         return (
             <div className="container-fluid">
                 <div className="row mt-4 mb-4">
+                    <div className="col-12">
+                        <h1 className="text-center text-blue">Galerie</h1>
+                    </div>
                     {galleries && galleries.length > 0 ?
-                     galleries.map(g => {
-                         return (
-                             <div className="col">
-                                 <img className="img-fluid" src={'https://' + document.location.hostname + '/api/img/' + g.img.id} alt={g.name}/>
-                             </div>
-                         )
-                     })
+                         galleries.map(g => {
+                             return (
+                                 <div className="col-sm-12 col-md-6 col-lg-4 mt-2 mb-2">
+                                     <img className="img-fluid" src={'https://' + document.location.hostname + '/api/img/' + g.img.id} alt={g.name} />
+                                 </div>
+                             )
+                         })
                     : ''}
                 </div>
             </div>

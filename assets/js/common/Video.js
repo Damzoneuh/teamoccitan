@@ -36,7 +36,7 @@ export default class Video extends Component{
                     loop={true}
                     autoPlay={true}
                     muted={true}
-                    src={'https://teamoccitan.timbahia.fr/file/porshe_intro' + browser } />
+                    src={'https://teamoccitan.timbahia.fr/file/intro' + browser } />
             );
         }
     }
