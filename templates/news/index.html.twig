@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Actualités{% endblock %}
+{% block javascripts %}{{ parent() }}{{ encore_entry_script_tags('news') }}{% endblock %}
+
+{% block body %}
+    <div id="news"></div>
+{% endblock %}

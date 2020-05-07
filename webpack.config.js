@@ -23,9 +23,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/js/app.js')
-    //.addEntry('page1', './assets/js/page1.js')
-    //.addEntry('page2', './assets/js/page2.js')
+
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -68,7 +66,15 @@ Encore
 
     // uncomment if you use API Platform Admin (composer req api-admin)
     .enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
+    .addEntry('global', './assets/sass/global.scss')
+    .addEntry('banner', './assets/js/common/Banner.js')
+    .addEntry('nav', './assets/js/common/Nav.js')
+    .addEntry('footer', './assets/js/common/Footer.js')
+    .addEntry('index', './assets/js/modules/index/Index.js')
+    .addEntry('news', './assets/js/modules/news/News.js')
+    .addEntry('member', './assets/js/modules/member/Member.js')
+    .addEntry('event', './assets/js/modules/member/events/Show.js')
+    .addEntry('gallery', './assets/js/modules/gallery/Gallery.js')
 ;
 
 module.exports = Encore.getWebpackConfig();

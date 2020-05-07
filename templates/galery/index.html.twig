@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Galerie{% endblock %}
+{% block javascripts %}{{ parent() }}{{ encore_entry_script_tags('gallery') }}{% endblock %}
+
+{% block body %}
+<div id="gallery"></div>
+{% endblock %}

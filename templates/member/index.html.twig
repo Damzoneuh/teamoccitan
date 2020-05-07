@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Espace membre{% endblock %}
+
+{% block body %}
+    <div id="member" data-user="{{ app.user.id }}" data-pilot="{{ is_granted('ROLE_PILOT') ? '1' : '0' }}">
+
+    </div>
+{% endblock %}
+{% block javascripts %}{{ parent() }} {{ encore_entry_script_tags('member') }}{% endblock %}

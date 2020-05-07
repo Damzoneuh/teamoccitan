@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Partenaire - {{ partner.name }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="mt-5 mb-5 bg-blue-gradient text-grey-inherit p-4 rounded shadow-lg">
+                <div class="row border-bottom mb-4 align-items-stretch">
+                    <div class="col d-flex justify-content-around align-items-center">
+                        <h1 class="mt-5 mb-5 text-center">{{ partner.name }}</h1>
+                    </div>
+                    <div class="col d-flex justify-content-around align-items-center">
+                        <img src="https://{{ app.request.host }}/api/img/{{ partner.img.id }}" alt="logo" class="img-fluid">
+                    </div>
+                </div>
+                <div class="text-center">
+                    {{ partner.text }}
+                </div>
+                <div class="text-center mt-2">
+                    {% if partner.link is not null %}
+                        <a href="{{ partner.link }}" ><h3>{{ partner.name }}</h3></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

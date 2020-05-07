@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Admin{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <table class="table text-blue">
+                    <tbody>
+                    {% if users|length > 0 %}
+                        {% for user in users %}
+                            <tr>
+                                <td class="text-center">
+                                    {{ user.email }}
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ path('admin_user', {id: user.id}) }}">{{ user.name }} {{ user.lastname }}</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

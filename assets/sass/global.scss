@@ -1,0 +1,213 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~video-react/styles/scss/video-react";
+
+$green: rgb(0,255,63);
+$green-inherit: rgba(0,255,63, 0.6);
+$blue: rgb(0,14,63);
+$blue-inherit: rgba(0,14,63, 0.8);
+$night-blue: rgb(0,0,63);
+$grey-inherit: rgba(255,255,255, 0.7);
+$black-inherit: rgba(0,0,0,0.75);
+
+a, button{
+  outline: none !important;
+}
+
+@font-face {
+  font-family: "Neo";
+  src: url("../fonts/zektonrg.ttf")
+}
+
+.link{
+  cursor: pointer;
+}
+
+.h-full{
+  font-size: 3rem;
+}
+
+.bg-grey-inherit{
+  background-color: $grey-inherit;
+}
+
+body{
+  font-family: 'Neo', sans-serif;
+  color: $grey-inherit;
+}
+.text-grey-inherit{
+  color: $grey-inherit !important;
+}
+
+.bg-blue-gradient{
+  background: rgb(2,0,36);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(0,0,63,1) 0%, rgba(0,0,30,1) 60%);
+}
+
+.bg-blue{
+  background-color: $night-blue !important;
+}
+
+.bg-green-inherit{
+  background-color: $green-inherit;
+}
+
+.bg-blue-inherit{
+  background-color: $blue-inherit !important;
+}
+
+.text-blue{
+  color: $blue !important;
+}
+
+.text-blue-inherit{
+  color: $blue-inherit !important;
+}
+
+.text-green{
+  color: $green !important;
+}
+
+.text-green-inherit{
+  color: $green-inherit !important;
+}
+
+.btn-primary{
+  background-color: $blue !important;
+  border-color: $blue-inherit !important;
+}
+
+.btn-primary:hover{
+  background-color: $blue-inherit !important;
+  border-color: $blue !important;
+}
+
+.btn-success{
+  background-color: $green !important;
+  border-color: $green-inherit !important;
+}
+
+.btn-success:hover{
+  background-color: $green-inherit !important;
+  border-color: $green !important;
+}
+
+.video-react-control-bar{
+  display: none !important;
+}
+
+@media screen and (max-width: 550px){
+  .parallax-banner{
+    height: 25vh !important;
+  }
+  .nav-logo{
+    width: 40%;
+  }
+
+  .h-250{
+    height: 200px;
+  }
+
+}
+@media screen and (min-width: 551px) and (max-width: 850px){
+  .parallax-banner{
+    min-height: 40vh !important;
+  }
+
+  .nav-logo{
+    width: 40%;
+  }
+
+  .h-250{
+    height: 250px;
+  }
+}
+@media screen and (min-width: 851px){
+  .parallax-banner{
+    min-height: 75vh !important;
+  }
+
+  .nav-logo{
+    width: 40%;
+  }
+  .h-250{
+    height: 250px;
+  }
+}
+
+.footer-logo{
+  width: 25%;
+}
+
+.grey-separator{
+  border-bottom: 1px solid $green-inherit;
+}
+
+.bg-black-inherit{
+  background-color: $black-inherit;
+}
+
+.layer{
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.scale:hover{
+  animation: scale 1s both;
+  -moz-animation: scale 1s both;
+  -webkit-animation: scale 1s both;
+}
+
+.scale{
+  animation: unScale 1s both;
+  -moz-animation: unScale 1s both;
+  -webkit-animation: unScale 1s both;
+}
+
+@keyframes scale {
+  from {
+    transform: scale(1);
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  to{
+    transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+  }
+}
+
+@keyframes unScale {
+  from {
+    transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+  }
+  to{
+    transform: scale(1);
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+.navbar{
+  z-index: 2000;
+}
+
+.z-1500{
+  z-index: 1500;
+}
+
+.dropdown-item:hover, .dropdown-item:focus{
+  color: $green-inherit !important;
+}
+
+.news-box{
+  -ms-overflow-x: auto;
+  overflow-x: auto;
+  height: 200px;
+  //line-height: 20px;
+  text-overflow: ellipsis;
+  word-wrap: break-spaces;
+}

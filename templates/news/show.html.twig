@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} {{ news.title }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="p-3 mt-4 mb-4 bg-blue-gradient text-grey-inherit">
+                    <div class="row align-content-stretch">
+                        <div class="col-sm-12 col-md-6">
+                            {% if news.img is not null %}
+                                <img src="https://{{ app.request.host }}/api/img/{{ news.img.id }}" alt="{{ news.img.name }}" class="img-fluid img-thumbnail">
+                            {% else %}
+                                <img src="{{ asset('assets/tor.png') }}" alt="logo" class="img-fluid">
+                            {% endif %}
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <h1 class="d-flex align-items-center justify-content-around h-100">{{ news.title }}</h1>
+                        </div>
+                        <div class="col-12 text-center mt-5">
+                            {{ news.text }}
+                        </div>
+                        <div class="text-green-inherit p-4"><small>{{ news.author.name }} {{ news.author.lastName }}</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
