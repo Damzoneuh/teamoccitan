@@ -108,7 +108,6 @@ export default class Setup extends Component{
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                     <div className="col-12">

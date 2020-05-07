@@ -69,7 +69,7 @@ class NewsController extends AbstractController
      * @param Request $request
      * @return Response
      * @throws Exception
-     * @Route("/admin/news/create", name="admin_news_create")
+     * @Route("/editor/news/create", name="admin_news_create")
      */
     public function createNews(Request $request){
         $form = $this->createFormBuilder()
@@ -139,7 +139,7 @@ class NewsController extends AbstractController
     /**
      * @param $id
      * @return RedirectResponse
-     * @Route("admin/news/delete/{id}", name="admin_news_delete")
+     * @Route("editor/news/delete/{id}", name="admin_news_delete")
      */
     public function deleteNews($id){
         $em = $this->getDoctrine()->getManager();
@@ -161,7 +161,7 @@ class NewsController extends AbstractController
     /**
      * @param $id
      * @return RedirectResponse
-     * @Route("/admin/news/enable/{id}", name="admin_news_enable")
+     * @Route("/editor/news/enable/{id}", name="admin_news_enable")
      */
     public function enableNews($id){
         $em = $this->getDoctrine()->getManager();

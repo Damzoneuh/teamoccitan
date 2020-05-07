@@ -54,7 +54,7 @@ export default class Nav extends Component{
                                 <a className="nav-link text-grey-inherit" href="/live">Live</a>
                             </li>
                             <li className="nav-item m-auto">
-                                <a className="nav-link text-grey-inherit" href="#">Galerie</a>
+                                <a className="nav-link text-grey-inherit" href="/gallery">Galerie</a>
                             </li>
                             {el.dataset.connected === '1' ?
                                 <li className="nav-item dropdown">
