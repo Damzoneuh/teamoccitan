@@ -66,7 +66,8 @@ class SetupController extends AbstractController
 
         $form = $this->createFormBuilder()
             ->add('name', TextType::class, [
-                'label' => 'Nom'
+                'label' => 'Nom',
+                'required' => 'false'
             ])
             ->add('file', FileType::class, [
                 'label' => 'Fichier'
@@ -101,7 +102,7 @@ class SetupController extends AbstractController
             $this->moveFile($file, $storagePath, $randomFileName);
             $path = $storagePath . '/' . $randomFileName;
             $setup = new Setup();
-            $setup->setName($data['name']);
+            $setup->setName($data['name'] ? $data['name'] : $this->getFileName($file));
             $setup->setCar($car);
             $setup->setTrack($track);
             $setup->setFile($path);
@@ -111,7 +112,6 @@ class SetupController extends AbstractController
             $this->addFlash('success', 'Le setup ' . $setup->getName() . ' à été ajouté');
             return $this->redirectToRoute('admin_setup_create');
         }
-
         return $this->render('setup/create.html.twig', ['form' => $form->createView()]);
     }
 
@@ -160,6 +160,6 @@ class SetupController extends AbstractController
     public function downloadSetup($id){
         /** @var Setup $setup */
         $setup = $this->getDoctrine()->getRepository(Setup::class)->find($id);
-        return $this->file($setup->getFile());
+        return $this->file($setup->getFile(), $setup->getName());
     }
 }
