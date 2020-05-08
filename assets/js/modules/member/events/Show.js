@@ -57,7 +57,7 @@ export default class Show extends Component{
                                     {event.car && event.car.length > 0 ?
                                         event.car.map(c => {
                                             return (
-                                                <div className="col">
+                                                <div className="col-sm-12 col-md-6">
                                                     <div className="position-relative w-auto">
                                                         <img src={'https://' + document.location.hostname + '/api/img/' + c.img.id} className="w-100"/>
                                                         <div className="position-absolute layer bg-black-inherit">
