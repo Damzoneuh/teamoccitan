@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Team;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -80,5 +82,40 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_all_users');
         }
         return $this->render('admin/user.html.twig', ['form' => $form->createView(), 'user' => $user]);
+    }
+
+    /**
+     * @param Request $request
+     * @Route("/admin/team/create", name="admin_team_create")
+     */
+    public function createTeam(Request $request){
+        $form = $this->createFormBuilder()
+            ->add('name', TextType::class, [
+                'label' => 'Nom de la team'
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Envoyer',
+                'attr' => [
+                    'class' => 'btn btn-group btn-success'
+                ]
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $data = $form->getData();
+            $team = new Team();
+            $team->setName($data['name']);
+
+            $em->persist($team);
+            $em->flush();
+
+            $this->addFlash('success', 'La team à été ajoutée');
+            return $this->redirectToRoute('admin_team_create');
+        }
+
+        return $this->render('member/create-team.html.twig', ['form' => $form->createView()]);
     }
 }
