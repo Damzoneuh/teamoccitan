@@ -37,7 +37,8 @@ export default class RelayHandler extends Component{
         for (let i = 0; event.duration > i; i++){
             let row = {
                 hour: this.sortDoubleO(hour + i) + ' ' + this.sortDoubleMinutes(minutes),
-                rel: []
+                rel: [],
+                offset: i
             };
             for(let i = 0; i < team.length; i++){
                 row.rel.push(null);
@@ -178,7 +179,7 @@ export default class RelayHandler extends Component{
                                     <option></option>
                                     {eventSorted && eventSorted.length > 0 ? eventSorted.map(es => {
                                         return (
-                                            <option value={parseInt(es.hour.slice(0,2)) - parseInt(event.date.slice(11, 13))}>{es.hour}</option>
+                                            <option value={es.offset}>{es.hour}</option>
                                         )
                                     }) : ''}
                                 </select>
