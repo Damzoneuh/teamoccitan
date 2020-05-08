@@ -14,6 +14,41 @@
                                 <td class="text-center">
                                     {{ user.email }}
                                 </td>
+                                <td class="text-center text-success">
+                                    {% set setted = 0 %}
+                                    {% for role in user.roles %}
+                                        {% if role == 'ROLE_SUPER_ADMIN'%}
+                                            {% if setted == 0 %}
+                                                Admin
+                                                {% set setted = 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if role == 'ROLE_ADMIN' %}
+                                            {% if setted == 0 %}
+                                                Admin
+                                                {% set setted = 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if role == 'ROLE_EDITOR' and setted == 0 %}
+                                            {% if setted == 0 %}
+                                                Editeur
+                                                {% set setted = 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if role == 'ROLE_PILOT' and setted == 0 %}
+                                            {% if setted == 0 %}
+                                                Pilot
+                                                {% set setted = 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if role == 'ROLE_USER' and setted == 0 %}
+                                            {% if setted == 0 %}
+                                                Visiteur
+                                                {% set setted = 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
                                 <td class="text-center">
                                     <a href="{{ path('admin_user', {id: user.id}) }}">{{ user.name }} {{ user.lastname }}</a>
                                 </td>
