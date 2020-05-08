@@ -34,11 +34,11 @@ export default class Result extends Component{
         else {
             return (
                 <div className="row">
+                    <h1 className="text-center"><a href="/pilot/result/create" className="btn btn-group btn-success">Publier un résultat</a> </h1>
                     {results && results.length > 0 ?
                         results.map(r => {
                             return (
                                 <div className="col-sm-6 col-md-4 col-lg-3">
-                                    <h1 className="text-center"><a href="/pilot/result/create" className="btn btn-group btn-success">Publier un résultat</a> </h1>
                                     <div className="card rounded shadow-lg bg-blue-gradient" >
                                         <img src={'https://' + document.location.hostname + '/api/img/' + r.img.id} className="card-img-top" alt={r.img.name} />
                                         <div className="card-body text-grey-inherit">
