@@ -160,6 +160,12 @@ class SetupController extends AbstractController
     public function downloadSetup($id){
         /** @var Setup $setup */
         $setup = $this->getDoctrine()->getRepository(Setup::class)->find($id);
-        return $this->file($setup->getFile(), $setup->getName());
+        if (strpos($setup->getName(), '.')){
+            $fileName = $setup->getName();
+        }
+        else{
+            $fileName = $setup->getName() . substr($setup->getFile(), strpos($setup->getFile(), '.'), strlen($setup->getFile()));
+        }
+        return $this->file($setup->getFile(), $fileName);
     }
 }
