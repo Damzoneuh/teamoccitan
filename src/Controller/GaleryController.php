@@ -98,7 +98,7 @@ class GaleryController extends AbstractController
      */
     public function getGallery(){
         return $this->json(
-            $this->getDoctrine()->getRepository(Galery::class)->findAll(),
+            $this->getDoctrine()->getRepository(Galery::class)->findBy([], ['id' => 'DESC']),
             200,
             [],
             $this->context
