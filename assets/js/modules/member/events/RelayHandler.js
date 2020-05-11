@@ -10,6 +10,7 @@ export default class RelayHandler extends Component{
             teams: this.props.teams,
             event: this.props.event,
             eventSorted: null,
+            pilotsInteam: null,
             selectedPilot: null,
             selectedTeam: null,
             selectedHour: null,
@@ -32,7 +33,25 @@ export default class RelayHandler extends Component{
         let minutes = parseInt(event.date.slice(14,16));
         let relays = this.props.relays;
         let team = this.props.teams;
+        let pilotsInTeams = [];
         let table = [];
+
+        if (team && team.length > 0) {
+            team.map(t => {
+                pilotsInTeams.push({
+                    name: t.name,
+                    id: t.id,
+                    pilots: []
+                })
+            });
+            pilotsInTeams.map(p => {
+                relays.map(r => {
+                    if (p.pilots && !p.pilots.includes(r.pilot.name + ' ' + r.pilot.lastname) && r.team.name === p.name){
+                        p.pilots.push(r.pilot.name + ' ' + r.pilot.lastname)
+                    }
+                })
+            })
+        }
 
         for (let i = 0; event.duration > i; i++){
             let row = {
@@ -59,7 +78,8 @@ export default class RelayHandler extends Component{
             })
             table.push(row);
             this.setState({
-                eventSorted: table
+                eventSorted: table,
+                pilotsInTeams: pilotsInTeams
             })
         }
     }
@@ -132,7 +152,7 @@ export default class RelayHandler extends Component{
     }
 
     render() {
-        const {pilots, teams, event, eventSorted} = this.state;
+        const {pilots, teams, event, eventSorted, pilotsInTeams} = this.state;
         return (
             <div className="row">
                 <div className="col-12 mb-4">
@@ -200,6 +220,28 @@ export default class RelayHandler extends Component{
                             <button className="btn btn-group btn-success">Valider</button>
                         </div>
                     </form>
+                </div>
+                <div className="col-12 mb-4">
+                    <div className="row">
+                        {pilotsInTeams && pilotsInTeams.length > 0 ?
+                            pilotsInTeams.map(p => {
+                                return (
+                                    <div className="col-12 ">
+                                        <div className="m-2 border border-success p-2">
+                                            <h2 className="text-blue text-center">{p.name}</h2>
+                                            {p.pilots && p.pilots.length > 0 ? p.pilots.map(pilot => {
+                                                return(
+                                                    <div className="text-center text-success">
+                                                        {pilot}
+                                                    </div>
+                                                )
+                                            }) : ''}
+                                        </div>
+                                    </div>
+                                )
+                            })
+                            : ''}
+                    </div>
                 </div>
                 <table className="table">
                     <thead>
