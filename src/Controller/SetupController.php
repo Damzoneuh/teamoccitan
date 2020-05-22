@@ -67,7 +67,7 @@ class SetupController extends AbstractController
         $form = $this->createFormBuilder()
             ->add('name', TextType::class, [
                 'label' => 'Nom',
-                'required' => 'false'
+                'required' => false
             ])
             ->add('file', FileType::class, [
                 'label' => 'Fichier'
